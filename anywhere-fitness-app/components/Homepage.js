@@ -1,0 +1,2 @@
+//Logo, nav bar with links to instructors, classes, about, and contact
+//Have sections of classes sorted by type. ie: Yoga, Simple Stretching, Cycling, Swimming, Upper Body, Lower Body, HIT, Distance Running
