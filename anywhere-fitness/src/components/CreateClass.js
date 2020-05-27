@@ -9,9 +9,10 @@ const formSchema = yup.object().shape({
     .string()
     .required("Class is a required field")
     .min(2, "Name must be at least 2 characters long"),
-  class_type: yup.string().required("Please choose a size"),
+  class_type: yup.string().required("Please choose a class type"),
   class_length: yup.string(),
   intensity: yup.string(),
+  location: yup.string().required("Please state a location"),
 });
 
 export default function Form() {
@@ -20,6 +21,7 @@ export default function Form() {
     class_type: "HITT",
     class_length: "",
     intensity: "1",
+    location: ""
   });
 
   //Error State 
@@ -34,12 +36,10 @@ export default function Form() {
 
   //Validation 
   const validate = (e) => {
-    const value =
-      e.target.type === "checkbox" 
-      ? e.target.id 
-      : e.target.type === "radio"
-      ? e.target.id
-      : e.target.value;
+    let value =
+    e.target.type === "radio"
+    ? e.target.id
+    : e.target.value;
     yup
       .reach(formSchema, e.target.name)
       .validate(value)
@@ -102,11 +102,10 @@ export default function Form() {
             value={formState.class_type}
             onChange={inputChange}
           >
-            <option value="xLarge"> XL</option>
-            <option value="large"> Large</option>
-            <option value="medium"> Medium </option>
-            <option value="small"> Small </option>
-            <option value="personalPizza"> Personal </option>
+            <option value="weightlifting"> Weightlifting</option>
+            <option value="aerobics"> Aerobics</option>
+            <option value="crossfit"> CrossFit </option>
+            <option value="hiit"> HIIT </option>
           </select>
         </form>
       </div>
