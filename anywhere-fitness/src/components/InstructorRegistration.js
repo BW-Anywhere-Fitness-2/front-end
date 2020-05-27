@@ -130,9 +130,6 @@ export default function InstructorRegistration() {
       <button type="submit">Register</button>
       </p>
       </div>
-    <div>
-      <button>Sign up as an instructor</button>
-    </div>
     </form>
    
   );

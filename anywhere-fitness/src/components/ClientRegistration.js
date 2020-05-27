@@ -131,6 +131,7 @@ export default function ClientRegistration() {
       </p>
       </div>
     </form>
+    
   //   <div className="switch">
   //   <Link to={`/register/instructor`}>
   //       <h2>{title}</h2>
