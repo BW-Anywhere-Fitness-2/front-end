@@ -1,18 +1,4 @@
-//setting up client accounts, and interaction to view instructors and select classes to attend.
-
-// - `Type`
-// - `Start time`
-// - `Duration`
-// - `Intensity level`
-// - `Location`
-// - `Current number of registered attendees`
-// - `Max class size`
-
-
-//Use the below as a form to create the client profile (name, age, weight, gender, and what type of restrictions or diets they have tried in the past and how well they worked on a scale from 1-10[dropdown], and other preferences). 
-
-
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import * as yup from "yup";
 import axios from "axios";
 
@@ -22,13 +8,9 @@ const formSchema = yup.object().shape({
       .string()
       .min(2, "Your name should have at least 2 characters")
       .required("Name is a required field"),
-    ageChoice: yup
-    .string()
-    .required("Must select an age"),
     email: yup
     .string()
-    .email("Must be a valid email")
-    .required("You don't have an email?"),
+    .email("Must be a valid email"),
     username: yup
     .string()
     .required("Username required"),
@@ -44,22 +26,14 @@ export default function ClientRegistration() {
     name: "",
     email: "",
     username: "",
-    password: ""
-    //password
-    //email
-    //genderChoice: "",
-    //dietaryRestrictions: "",
-    //profileAttributes: []
+    password: "",
   });
 
   const [errorState, setErrorState] = useState({
     name: "",
     email: "",
     username: "",
-    password: ""
-    //genderChoice: "",
-    //dietaryRestrictions: "",
-    //profileAttributes: []
+    password: "",
   });
 
   const validate = e => {
@@ -82,7 +56,6 @@ export default function ClientRegistration() {
       });
   };
 
-  // onChange function
   const inputChange = e => {
     e.persist();
     validate(e);
@@ -91,14 +64,6 @@ export default function ClientRegistration() {
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
   };
-
-  // const handleCheck = e => {
-  //   e.persist();
-  //   setFormState({
-  //     ...formState,
-  //     profileAttributes: [formState.profileAttributes, e.target.value]
-  //   })
-  // }
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -111,6 +76,7 @@ export default function ClientRegistration() {
 
   return (
     <form onSubmit={formSubmit}>
+      <h1>Client Registration</h1>
       <label htmlFor="name">
         <h5>Name</h5>
         <input
@@ -138,9 +104,10 @@ export default function ClientRegistration() {
       </label>
       <label htmlFor="username">
         <h5>Username</h5>
-        <textarea
+        <input
           name="username"
           id="username"
+          placeholder="Enter username here..."
           value={formState.username}
           onChange={inputChange}
         />
@@ -150,9 +117,10 @@ export default function ClientRegistration() {
       </label>
       <label htmlFor="password">
         <h5>Password</h5>
-        <textarea
+        <input
           name="password"
           id="password"
+          placeholder="Enter password here..."
           value={formState.password}
           onChange={inputChange}
           />
@@ -163,5 +131,17 @@ export default function ClientRegistration() {
       </p>
       </div>
     </form>
+  //   <div className="switch">
+  //   <Link to={`/register/instructor`}>
+  //       <h2>{title}</h2>
+  //       </Link>
+  //   </div>
+  //    <div>
+  //    <button className="switch">Switch to Instructor</button>
+  //  </div>
+
   );
+  
 }
+
+
