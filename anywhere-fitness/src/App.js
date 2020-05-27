@@ -11,7 +11,7 @@ import CreateClass from "./components/CreateClass"
 function App() {
   return (
       <>
-      <CreateClass/>
+      {/* <CreateClass/> */}
       <h1>Anywhere Fitness</h1>
       <Router>
       <div>
