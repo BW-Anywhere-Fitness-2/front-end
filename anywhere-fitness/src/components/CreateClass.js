@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as yup from "yup";
 import axios from "axios";
-// import TimePicker from "react-time-picker";
+import TimePicker from "react-time-picker";
 
 //YUP validation schema 
 const formSchema = yup.object().shape({
@@ -110,10 +110,10 @@ export default function Form() {
         </form>
       </div>
 
-      {/* <div className="timeComponent">
+    <div className="timeComponent">
         <h3>Select Time </h3>
         <TimePicker />
-      </div> */}
+      </div> 
 
       <div className="lengthComponent">
         <form>
