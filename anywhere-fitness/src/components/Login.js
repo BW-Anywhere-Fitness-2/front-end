@@ -16,7 +16,7 @@ class Login extends Component {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/auth/login/user", this.state.credentials)
+      .post("https://anywhere-fitness-ptbw.herokuapp.com/api/auth/register/user", this.state.credentials)
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("token", response.data.payload);
