@@ -157,7 +157,7 @@ export default function ClientRegistration() {
           name="profileAttributes"
           onChange={handleCheck}
         />
-        <100
+        100
       </label>
       <label>
         <input
