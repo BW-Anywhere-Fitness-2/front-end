@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import * as yup from "yup";
 import axios from "axios";
 
@@ -20,7 +20,7 @@ const formSchema = yup.object().shape({
     .required("Password is a required field"),
 });
 
-export default function ClientRegistration() {
+export default function InstructorRegistration() {
   // managing state for our form inputs
   const [formState, setFormState] = useState({
     name: "",
@@ -69,14 +69,14 @@ export default function ClientRegistration() {
     e.preventDefault();
     console.log("form submitted!");
     axios
-      .post("https://anywhere-fitness-ptbw.herokuapp.com/api/auth/register/user", formState)
+      .post("https://anywhere-fitness-ptbw.herokuapp.com/api/auth/register/instructor", formState)
       .then(response => console.log(response))
       .catch(err => console.log(err));
   };
 
   return (
     <form onSubmit={formSubmit}>
-      <h1>Client Registration</h1>
+    <h1>Instructor Registration</h1>
       <label htmlFor="name">
         <h5>Name</h5>
         <input
@@ -131,16 +131,6 @@ export default function ClientRegistration() {
       </p>
       </div>
     </form>
-    
-  //   <div className="switch">
-  //   <Link to={`/register/instructor`}>
-  //       <h2>{title}</h2>
-  //       </Link>
-  //   </div>
-  //    <div>
-  //    <button className="switch">Switch to Instructor</button>
-  //  </div>
 
   );
-  
 }

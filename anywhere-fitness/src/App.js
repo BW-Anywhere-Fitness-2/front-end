@@ -6,10 +6,12 @@ import PrivateRoute from "./components/privateRoute";
 import Login from "./components/Login";
 import ClientRegistration from "./components/ClientRegistration"
 import InstructorRegistration from "./components/InstructorRegistration";
+import CreateClass from "./components/CreateClass"
 
 function App() {
   return (
       <>
+      <CreateClass/>
       <h1>Anywhere Fitness</h1>
       <Router>
       <div>

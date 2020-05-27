@@ -3,37 +3,26 @@ import * as yup from "yup";
 import axios from "axios";
 // import TimePicker from "react-time-picker";
 
+//YUP validation schema 
 const formSchema = yup.object().shape({
-  name: yup
+  class_name: yup
     .string()
-    .required("Name is a required field")
+    .required("Class is a required field")
     .min(2, "Name must be at least 2 characters long"),
-  sizes: yup.string().required("Please choose a size"),
-  marinara: yup.boolean(),
-  whiteGarlic: yup.boolean(),
-  pesto: yup.boolean(),
-  bbq: yup.boolean(),
-  pepperoni: yup.boolean(),
-  pineapple: yup.boolean(),
-  olives: yup.boolean(),
-  mushrooms: yup.boolean(),
-  instructions: yup.string(),
+  class_type: yup.string().required("Please choose a size"),
+  class_length: yup.string(),
+  intensity: yup.string(),
 });
 
 export default function Form() {
   const [formState, setFormState] = useState({
-    name: "",
-    sizes: "xLarge",
-    pesto: false,
-    whiteGarlic: false,
-    bbq: false,
-    pepperoni: false,
-    pineapple: false,
-    olives: false,
-    mushrooms: false,
-    instructions: "",
+    class_name: "",
+    class_type: "HITT",
+    class_length: "",
+    intensity: "1",
   });
 
+  //Error State 
   const [errors, setErrors] = useState({
     name: "",
     size: "",
@@ -42,9 +31,15 @@ export default function Form() {
 
   const [order, setOrder] = useState({});
 
+
+  //Validation 
   const validate = (e) => {
     const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+      e.target.type === "checkbox" 
+      ? e.target.id 
+      : e.target.type === "radio"
+      ? e.target.id
+      : e.target.value;
     yup
       .reach(formSchema, e.target.name)
       .validate(value)
@@ -85,14 +80,14 @@ export default function Form() {
 
   return (
     <form onSubmit={formSubmit}>
-      <label htmlFor="name">
-       <h2> Class Name</h2>
+      <label htmlFor="class_name">
+        <h2> Class Name</h2>
         <input
           type="text"
-          name="name"
-          id="name"
+          name="class_name"
+          id="class_name"
           placeholder="class name"
-          value={formState.name}
+          value={formState.class_name}
           onChange={inputChange}
         ></input>
         {errors.name.lenth > 2 ? <p className="error">{errors.name}</p> : null}
@@ -102,9 +97,9 @@ export default function Form() {
         <form>
           <h3>Type</h3>
           <select
-            id="type"
-            name="type"
-            value={formState.type}
+            id="class_type"
+            name="class_type"
+            value={formState.class_type}
             onChange={inputChange}
           >
             <option value="xLarge"> XL</option>
@@ -116,18 +111,18 @@ export default function Form() {
         </form>
       </div>
 
-      <div className="timeComponent">
+      {/* <div className="timeComponent">
         <h3>Select Time </h3>
         <TimePicker />
-      </div>
+      </div> */}
 
       <div className="lengthComponent">
         <form>
           <h3>Length</h3>
           <select
             id="length"
-            name="length"
-            value={formState.type}
+            name="class_length"
+            value={formState.length}
             onChange={inputChange}
           >
             <option value=".5hour"> 30 minutes</option>
@@ -139,21 +134,58 @@ export default function Form() {
         </form>
       </div>
 
-      <div className="intensity">
+      <div className="intensitySelection">
         <h3>Intensity Level </h3>
-        <label>
+        <label className="intensitySelection" htmlFor="easy">
           1 (easy)
-          <input type="radio" onChange={(event) => inputChange(event)} />
+          <input
+            id="easy"
+            type="radio"
+            name="intensity"
+            value={formState.intensity}
+            onChange={inputChange}
+          />
+          </label>
+          <label className="intensitySelection" htmlFor="2">
           2
-        <input type="radio" onChange={event => inputChange(event)}/>
-        3
-        <input type="radio" onChange={event => inputChange(event)}/>
-        4
-        <input type="radio" onChange={event => inputChange(event)}/>
-        
-        <input type="radio" onChange={event => inputChange(event)}/>
-        5 (difficult)
-        </label>
+          <input
+            id="2"
+            type="radio"
+            name="intensity"
+            value={formState.intensity}
+            onChange={inputChange}
+          />
+          </label>
+           <label className="intensitySelection" htmlFor="moderate">
+          3
+          <input
+            id="moderate"
+            type="radio"
+            name="intensity"
+            value={formState.intensity}
+            onChange={inputChange}
+          />
+          </label>
+          <label className="intensitySelection" htmlFor="4">
+          (moderate) 4
+          <input
+            id="4"
+            type="radio"
+            name="intensity"
+            value={formState.intensity}
+            onChange={inputChange}
+          />
+          </label>
+          <label className="intensitySelection" htmlFor="extreme">
+          5 (extreme)
+          <input
+            id="extreme"
+            type="radio"
+            name="intensity"
+            value={formState.intensity}
+            onChange={inputChange}
+          />
+          </label>
       </div>
 
       <label htmlFor="location">
@@ -169,19 +201,15 @@ export default function Form() {
         {errors.name.lenth > 2 ? <p className="error">{errors.name}</p> : null}
       </label>
 
-      
-
       <div className="attendees">
         <label htmlFor="attendees">
           <h3>Current # of attendees:</h3>
-          
         </label>
       </div>
 
       <div className="maxOccupancy">
         <label htmlFor="maxOccupancy">
           <h3>Max # of attendees:</h3>
-          
         </label>
       </div>
       <button data-test-id="submitButton">Submit</button>
