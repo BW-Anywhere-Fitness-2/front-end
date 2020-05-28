@@ -31,9 +31,34 @@ function Login(props) {
       });
   };
 
+  const handleInstructorLogin = () => {
+    setError(null);
+    setLoading(true);
+    axios
+      .post(
+        "https://anywhere-fitness-ptbw.herokuapp.com/api/auth/login/instructor",
+        {
+          username: username.value,
+          password: password.value,
+        }
+      )
+      .then((response) => {
+        setLoading(false);
+        setUserSession(response.data.token, response.data.user);
+        localStorage.setItem("token", response.data.token);
+        props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (error.response.status === 401)
+          setError(error.response.data.message);
+        else setError("Something went wrong. Please try again later.");
+      });
+  };
+
   return (
     <div>
-      Login
+      Client Login
       <br />
       <br />
       <div>
