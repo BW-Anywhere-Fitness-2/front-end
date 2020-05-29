@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as yup from "yup";
 import axios from "axios";
+import styled, { css } from 'styled-components'
 
 
 const formSchema = yup.object().shape({
@@ -146,3 +147,39 @@ export default function ClientRegistration() {
 }
 
 
+
+
+// const Button = styled.button`
+//   background: transparent;
+//   border-radius: 3px;
+//   border: 2px solid red;
+//   color: red;
+//   margin: 0.5em 1em;
+//   padding: 0.25em 1em;
+//   ${props => props.primary && css`
+//     background: palevioletred;
+//     color: white;
+//   `}
+// `;
+// const Container = styled.div`
+//   text-align: center;
+// `
+// render(
+//   <Container>
+//     <Button>Register</Button>
+//     <Button primary>Primary Button</Button>
+//   </Container>
+// );
+
+// Create a Title component that'll render an <h1> tag with some styles
+// const Title = styled.h1`
+//   font-size: 1.5em;
+//   text-align: center;
+//   color: palevioletred;
+// `;
+// Create a Wrapper component that'll render a <section> tag with some styles
+// const Background = styled.section`
+//   padding: 4em;
+//   background: black;
+// `;
+// Use Title and Wrapper like any other React component – except they're styled!

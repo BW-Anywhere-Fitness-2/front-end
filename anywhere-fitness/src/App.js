@@ -1,22 +1,37 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link, } from "react-router-dom";
 import "./App.css";
 import MyClassBoard from "./components/ClassBoard";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import ClientRegistration from "./components/ClientRegistration"
 import InstructorRegistration from "./components/InstructorRegistration";
+import styled, { css } from 'styled-components'
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+}
   return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
-      <h1>Anywhere Fitness</h1>
+      <GlobalStyles/>
+      <>
+      
       <Router>
+      <h1>
+      Anywhere Fitness
+      </h1>
       <div>
+      <button onClick={themeToggler}>Switch Theme</button>
         <ul>
-          {/* <li>
+          <li>
             <Link to="/">Home</Link>
-          </li> */}
+          </li>
            <li>
             <Link to="/login">Login</Link>
           </li>
@@ -45,8 +60,22 @@ function App() {
       </div>
     </Router>
       </>
+      </>
+    </ThemeProvider>
     );
   };
+
+//   const Background = styled.section`
+//   padding: 4em;
+//   background: black;
+// `;
+
+//   render(
+//     <Background>
+//       <ClientRegistration/>
+//       <InstructorRegistration/>
+//     </Background>
+//   );
 
 
 
