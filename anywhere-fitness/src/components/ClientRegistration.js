@@ -21,17 +21,6 @@ const formSchema = yup.object().shape({
     .required("Password is a required field"),
 });
 
-// const FormField = styled.field`
-// display: inline-block;
-// color: palevioletred;
-// font-size: 1em;
-// margin: 1em;
-// padding: 0.25em 1em;
-// border: 2px solid palevioletred;
-// border-radius: 3px;
-// display: block;
-// `;
-
 export default function ClientRegistration() {
   // managing state for our form inputs
   const [formState, setFormState] = useState({
@@ -146,54 +135,6 @@ export default function ClientRegistration() {
       </p>
       </div>
     </form>
-    
-  //   <div className="switch">
-  //   <Link to={`/register/instructor`}>
-  //       <h2>{title}</h2>
-  //       </Link>
-  //   </div>
-  //    <div>
-  //    <button className="switch">Switch to Instructor</button>
-  //  </div>
-
   );
   
-}
-
-
-
-
-// const Button = styled.button`
-//   background: transparent;
-//   border-radius: 3px;
-//   border: 2px solid red;
-//   color: red;
-//   margin: 0.5em 1em;
-//   padding: 0.25em 1em;
-//   ${props => props.primary && css`
-//     background: palevioletred;
-//     color: white;
-//   `}
-// `;
-// const Container = styled.div`
-//   text-align: center;
-// `
-// render(
-//   <Container>
-//     <Button>Register</Button>
-//     <Button primary>Primary Button</Button>
-//   </Container>
-// );
-
-// Create a Title component that'll render an <h1> tag with some styles
-// const Title = styled.h1`
-//   font-size: 1.5em;
-//   text-align: center;
-//   color: palevioletred;
-// `;
-// Create a Wrapper component that'll render a <section> tag with some styles
-// const Background = styled.section`
-//   padding: 4em;
-//   background: black;
-// `;
-// Use Title and Wrapper like any other React component – except they're styled!
+};
