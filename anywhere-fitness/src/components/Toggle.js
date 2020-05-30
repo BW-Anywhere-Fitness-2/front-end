@@ -10,7 +10,7 @@ const Button = styled.button`
   font-size:0.8rem;
   padding: 0.6rem;
   }
-\`;
+`;
 const Toggle = ({theme,  toggleTheme }) => {
     return (
         <Button onClick={toggleTheme} >

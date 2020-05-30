@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as yup from "yup";
 import axios from "axios";
+import FormField from './FormField'
 
 
 const formSchema = yup.object().shape({
@@ -79,7 +80,7 @@ export default function InstructorRegistration() {
     <h1>Instructor Registration</h1>
       <label htmlFor="name">
         <h5>Name</h5>
-        <input
+        <FormField
           type="text"
           name="name"
           id="name"
@@ -93,7 +94,7 @@ export default function InstructorRegistration() {
       </label>
       <label htmlFor="email">
         <h5>Email</h5>
-        <input 
+        <FormField 
         type="email"
         name="email"
         id="email"
@@ -104,7 +105,7 @@ export default function InstructorRegistration() {
       </label>
       <label htmlFor="username">
         <h5>Username</h5>
-        <input
+        <FormField
           name="username"
           id="username"
           placeholder="Enter username here..."
@@ -117,7 +118,7 @@ export default function InstructorRegistration() {
       </label>
       <label htmlFor="password">
         <h5>Password</h5>
-        <input
+        <FormField
           name="password"
           id="password"
           placeholder="Enter password here..."

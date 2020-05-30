@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as yup from "yup";
 import axios from "axios";
-import styled, { css } from 'styled-components'
-
+import FormField from './FormField'
+import Buttons from './Buttons'
 
 const formSchema = yup.object().shape({
     name: yup
@@ -20,6 +20,17 @@ const formSchema = yup.object().shape({
     .min(6, "Your password should contain at least 6 characters")
     .required("Password is a required field"),
 });
+
+// const FormField = styled.field`
+// display: inline-block;
+// color: palevioletred;
+// font-size: 1em;
+// margin: 1em;
+// padding: 0.25em 1em;
+// border: 2px solid palevioletred;
+// border-radius: 3px;
+// display: block;
+// `;
 
 export default function ClientRegistration() {
   // managing state for our form inputs
@@ -75,12 +86,15 @@ export default function ClientRegistration() {
       .catch(err => console.log(err));
   };
 
+
+
   return (
-    <form onSubmit={formSubmit}>
+    <form onSubmit={formSubmit} >
       <h1>Client Registration</h1>
       <label htmlFor="name">
         <h5>Name</h5>
-        <input
+        <FormField
+          // style={FormField}
           type="text"
           name="name"
           id="name"
@@ -94,7 +108,7 @@ export default function ClientRegistration() {
       </label>
       <label htmlFor="email">
         <h5>Email</h5>
-        <input 
+        <FormField 
         type="email"
         name="email"
         id="email"
@@ -105,7 +119,7 @@ export default function ClientRegistration() {
       </label>
       <label htmlFor="username">
         <h5>Username</h5>
-        <input
+        <FormField
           name="username"
           id="username"
           placeholder="Enter username here..."
@@ -118,7 +132,7 @@ export default function ClientRegistration() {
       </label>
       <label htmlFor="password">
         <h5>Password</h5>
-        <input
+        <FormField
           name="password"
           id="password"
           placeholder="Enter password here..."
@@ -128,7 +142,7 @@ export default function ClientRegistration() {
       </label>
      <div>
        <p>
-      <button type="submit">Register</button>
+      <Buttons type="submit">Register</Buttons>
       </p>
       </div>
     </form>
