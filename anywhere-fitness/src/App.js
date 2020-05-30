@@ -9,12 +9,12 @@ import { GlobalStyles } from "./components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/Themes"
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
+    theme === 'dark' ? setTheme('light') : setTheme('dark')
 }
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <>
       <GlobalStyles/>
       <>
@@ -25,7 +25,7 @@ function App() {
       Anywhere Fitness
       </h1>
       <div>
-      <button onClick={themeToggler}>Dark/Light Mode</button>
+      <button onClick={themeToggler}>Switch Mode</button>
         <ul>
           <li>
             <Link style={{color: "#00eeee"}} to="/">Home</Link>

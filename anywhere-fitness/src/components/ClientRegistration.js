@@ -22,7 +22,6 @@ const formSchema = yup.object().shape({
 });
 
 export default function ClientRegistration() {
-  // managing state for our form inputs
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -74,8 +73,6 @@ export default function ClientRegistration() {
       .then(response => console.log(response))
       .catch(err => console.log(err));
   };
-
-
 
   return (
     <form onSubmit={formSubmit} >

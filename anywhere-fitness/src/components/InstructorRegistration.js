@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as yup from "yup";
 import axios from "axios";
 import FormField from './FormField'
+import Buttons from './Buttons'
 
 
 const formSchema = yup.object().shape({
@@ -22,7 +23,6 @@ const formSchema = yup.object().shape({
 });
 
 export default function InstructorRegistration() {
-  // managing state for our form inputs
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -128,7 +128,7 @@ export default function InstructorRegistration() {
       </label>
      <div>
        <p>
-      <button type="submit">Register</button>
+       <Buttons type="submit">Register</Buttons>
       </p>
       </div>
     </form>

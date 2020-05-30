@@ -5,10 +5,11 @@ export const lightTheme = {
     background: '#363537',
     ul: '#000000',
     p: '#000000',
+    // button: 'red',
 }
 export const darkTheme = {
     body: '#363537',
     text: '#FAFAFA',
     toggleBorder: '#6B8096',
-    background: '#000000',
+    background: '#999',
 }
