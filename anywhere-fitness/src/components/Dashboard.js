@@ -1,5 +1,6 @@
 import React from "react";
 import axiosWithAuth from "./AxiosWithAuth";
+import AddClass from "./updateClass";
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class DashBoard extends React.Component {
             </li>
           </ul>
         )}
+        <AddClass />
       </div>
     );
   }
