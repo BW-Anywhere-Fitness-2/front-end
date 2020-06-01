@@ -6,6 +6,8 @@ import PublicRoute from "./Utils/PublicRoute";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
+import ClientRegistration from "./components/ClientRegistration";
+import InstructorRegistration from "./components/InstructorRegistration";
 
 import { getToken, removeUserSession, setUserSession } from "./Utils/Common";
 
@@ -40,21 +42,23 @@ function App() {
       <BrowserRouter>
         <div>
           <div className="header">
-            <NavLink exact activeClassName="active" to="/">
-              Home
+            <NavLink exact activeClassName="active" to="/user">
+              Client Registration
             </NavLink>
             <NavLink activeClassName="active" to="/login">
               Login
             </NavLink>
             <small>(Access without token only)</small>
-            <NavLink activeClassName="active" to="/dashboard">
-              Dashboard
+            <NavLink activeClassName="active" to="/instructor">
+              Instructor Registration
             </NavLink>
             <small>(Access with token only)</small>
           </div>
           <div className="content">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/user" component={ClientRegistration} />
+              <Route path="/instructor" component={InstructorRegistration} />
               <PublicRoute path="/login" component={Login} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
             </Switch>
